@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self' data: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+    <meta name="color-scheme" content="light dark">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="onsenui/css/onsenui.css">
+    <link rel="stylesheet" href="onsenui/css/onsen-css-components.min.css">
+    <script src="onsenui/js/onsenui.min.js"></script>
+    <title>Hello World</title>
+</head>
+
+<body>
+    <ons-tabbar swipeable position="bottom" class="bg-danger">
+        <ons-tab label="Записи" icon="ion-ios-book" page="entries.html" active></ons-tab>
+        <ons-tab label="Нов запис" icon="ion-ios-add" page="new-entry.html"></ons-tab>
+    </ons-tabbar>
+
+    <!-- Записи -->
+    <template id="entries.html">
+        <ons-page id="entries">
+            <ons-toolbar style="margin-bottom: 50px;">
+                <div class="center">📓 Моите записи</div>
+            </ons-toolbar>
+            <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-top: 10px;">
+                <ons-search-input placeholder="" id="search"></ons-search-input>
+                <ons-button id="searchBtn">Търси</ons-button>
+            </div>
+            <ons-list id="entryList" style="display: flex; gap: 15px; flex-direction: column; margin: 15px; background-color: transparent">
+               
+                <!-- Генерира се динамично -->
+            </ons-list>
+        </ons-page>
+    </template>
+
+    <!-- Нов запис -->
+    <template id="new-entry.html">
+        <ons-page id="newEntry">
+            <ons-toolbar>
+                <div class="center">➕ Нов запис</div>
+            </ons-toolbar>
+            <section style="margin: 10px; display: flex; flex-direction: column; padding: 15px;">
+                <ons-input id="title" modifier="underbar" placeholder="Заглавие" float></ons-input><br /><br />
+                <ons-input id="description" placeholder="Описание" rows="4" float></ons-input><br /><br />
+                <ons-button id="photoBtn">📸 Качи снимка</ons-button><br /><br />
+                <input type="file" id="photoInput" accept="image/*" style="visibility: hidden;">
+                <img id="previewImage" src="./img/landscape-placeholder.svg" width="200" height="200" style="align-self: center;"/>
+                <ons-button id="saveBtn" style="align-self: end; margin-top: 30px; width: 100%;">💾 Добави записа</ons-button>
+            </section>
+        </ons-page>
+    </template>
+    <script src="cordova.js"></script>
+    <script src="js/index.js"></script>
+</body>
+
+</html>
